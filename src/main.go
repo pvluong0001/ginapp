@@ -1,31 +1,24 @@
 package main
 
 import (
-	"ginapp/controller"
-	"ginapp/service"
-	"net/http"
-
+	"ginapp/models"
+	"ginapp/routes"
 	"github.com/gin-gonic/gin"
+	"os"
+
+	_ "github.com/joho/godotenv/autoload"
 )
 
 func main() {
-	var loginService service.LoginService = service.StaticLoginService()
-	var jwtService service.JWTService = service.JWTAuthService()
-	var loginController controller.LoginController = controller.LoginHandler(loginService, jwtService)
+	// connect database
+	models.ConnectDatabase()
 
 	server := gin.Default()
 
-	server.POST("/login", func(ctx *gin.Context) {
-		token := loginController.Login(ctx)
-		if token != "" {
-			ctx.JSON(http.StatusOK, gin.H{
-				"token": token,
-			})
-		} else {
-			ctx.JSON(http.StatusUnauthorized, nil)
-		}
-	})
-	port := "3456"
-	server.Run(":" + port)
+	api := server.Group("/api")
+	{
+		auth.Routes(api)
+	}
 
+	server.Run(":" + os.Getenv("PORT"))
 }
