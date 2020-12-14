@@ -2,15 +2,13 @@ package models
 
 import (
 	"fmt"
-	"ginapp/schemas"
+	"ginapp/core/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"os"
 )
 
-var DB *gorm.DB
-
-func ConnectDatabase() {
+func ConnectDatabase() *gorm.DB {
 	dsn := getDBUrl()
 	fmt.Println(dsn)
 	database, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
@@ -21,10 +19,10 @@ func ConnectDatabase() {
 	} else {
 		fmt.Println("Connect db success")
 
-		database.AutoMigrate(&schemas.User{})
+		database.AutoMigrate(&models.User{})
 	}
 
-	DB = database
+	return database
 }
 
 func getDBUrl() string {

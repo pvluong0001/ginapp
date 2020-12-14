@@ -1,8 +1,9 @@
 package main
 
 import (
-	"ginapp/models"
-	"ginapp/routes"
+	"ginapp/auth"
+	models "ginapp/core"
+	"ginapp/user"
 	"github.com/gin-gonic/gin"
 	"os"
 
@@ -11,13 +12,16 @@ import (
 
 func main() {
 	// connect database
-	models.ConnectDatabase()
+	db := models.ConnectDatabase()
+	userController := initUserController(db)
+	authController := initAuthController(db)
 
 	server := gin.Default()
 
 	api := server.Group("/api")
 	{
-		auth.Routes(api)
+		user.Routes(api, userController)
+		auth.Routes(api, authController)
 	}
 
 	server.Run(":" + os.Getenv("PORT"))
