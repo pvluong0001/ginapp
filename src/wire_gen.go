@@ -30,6 +30,7 @@ func initUserController(db *gorm.DB) controllers.UserController {
 func initAuthController(db *gorm.DB) controllers2.AuthController {
 	userRepository := repositories.ProvideUserRepository(db)
 	authService := services2.ProvideAuthService(userRepository)
-	authController := controllers2.ProvideAuthController(authService)
+	jwtService := services2.ProvideJwtService()
+	authController := controllers2.ProvideAuthController(authService, jwtService)
 	return authController
 }

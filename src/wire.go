@@ -19,7 +19,7 @@ func initUserController(db *gorm.DB) controllers.UserController {
 }
 
 func initAuthController(db *gorm.DB) controllers2.AuthController {
-	wire.Build(repositories.ProvideUserRepository, services2.ProvideAuthService, controllers2.ProvideAuthController)
+	wire.Build(repositories.ProvideUserRepository, services2.ProvideAuthService, services2.ProvideJwtService, controllers2.ProvideAuthController)
 
 	return controllers2.AuthController{}
 }
