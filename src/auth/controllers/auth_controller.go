@@ -72,6 +72,14 @@ func (controller AuthController) LoginAction() gin.HandlerFunc {
 			return
 		}
 
+		if err := user.ComparePassword(request.Password); err != nil {
+			context.JSON(http.StatusInternalServerError, gin.H{
+				"error":   err.Error(),
+				"message": "The credentials is not correct",
+			})
+			return
+		}
+
 		token, _ := controller.JwtService.GenerateToken(user.ID)
 
 		context.JSON(http.StatusOK, gin.H{

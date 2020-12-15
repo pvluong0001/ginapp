@@ -25,3 +25,12 @@ func (user *User) BeforeSave(db *gorm.DB) error {
 	user.Password = string(hashPassword)
 	return nil
 }
+
+func (user *User) ComparePassword(password string) error {
+	hashPassword := []byte(user.Password)
+	if err := bcrypt.CompareHashAndPassword(hashPassword, []byte(password)); err != nil {
+		return err
+	}
+
+	return nil
+}
