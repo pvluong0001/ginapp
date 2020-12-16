@@ -5,6 +5,7 @@ import (
 	"ginapp/auth/middlewares"
 	"ginapp/auth/services"
 	models "ginapp/core"
+	"ginapp/core/configs"
 	"ginapp/user"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -16,6 +17,10 @@ import (
 func main() {
 	// connect database
 	db := models.ConnectDatabase()
+
+	// setup queue
+	configs.InitMailChannel()
+
 	userController := initUserController(db)
 	authController := initAuthController(db)
 	service := services.ProvideJwtService()

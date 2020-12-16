@@ -17,6 +17,7 @@ func CheckJwt(service services.JwtService) gin.HandlerFunc {
 			context.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
 				"message": "Unauthorized",
 			})
+			return
 		}
 
 		tokenString := strings.Trim(authHeader[len(BearerSchema):], " ")
