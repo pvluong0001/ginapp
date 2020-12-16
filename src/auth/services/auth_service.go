@@ -1,8 +1,6 @@
 package services
 
 import (
-	"ginapp/core/configs"
-	"ginapp/core/emails"
 	"ginapp/core/models"
 	"ginapp/core/repositories"
 )
@@ -23,12 +21,15 @@ func (service *AuthService) RegisterUserHandle(user *models.User) error {
 	}
 
 	// send register mail
-	configs.EmailChannel <- &emails.BasicMail{
-		Recipient: user.Email,
-		From:      "pvluong0001@gmail.com",
-		Subject:   "Register Email",
-		Message:   "Message body",
-	}
+	/*go func() {
+		email := emails2.RegisterMail{
+			Recipient: user.Email,
+			From:      "pvluong0001@gmail.com",
+			Subject:   "Register Email",
+			Message:   "Message body",
+		}
+		email.Handle()
+	}()*/
 
 	return nil
 }

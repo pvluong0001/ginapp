@@ -5,21 +5,16 @@ import (
 	"ginapp/auth/middlewares"
 	"ginapp/auth/services"
 	models "ginapp/core"
-	"ginapp/core/configs"
 	"ginapp/user"
 	"github.com/gin-gonic/gin"
+	_ "github.com/joho/godotenv/autoload"
 	"net/http"
 	"os"
-
-	_ "github.com/joho/godotenv/autoload"
 )
 
 func main() {
 	// connect database
 	db := models.ConnectDatabase()
-
-	// setup queue
-	configs.InitMailChannel()
 
 	userController := initUserController(db)
 	authController := initAuthController(db)
