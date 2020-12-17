@@ -7,6 +7,11 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   title = 'Login';
+  toggle = true;
+  books = [
+    {id: 1, name: 'Book 1'},
+    {id: 2, name: 'Book 2'},
+  ];
 
   constructor() {
   }
@@ -16,5 +21,9 @@ export class LoginComponent implements OnInit {
 
   loginHandle(): void {
     this.title = 'Logged';
+  }
+
+  getDataFromChildren(value: string): void {
+    this.title = value;
   }
 }

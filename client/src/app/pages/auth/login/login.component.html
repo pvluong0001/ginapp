@@ -1,6 +1,32 @@
 <h1>{{ title }}</h1>
 
 <input type="text" [(ngModel)]="title">
-<input type="text" [ngModel]="title" (ngModelChange)="title = $event" >
+<input type="text" [ngModel]="title" (ngModelChange)="title = $event" *ngIf="title.length > 10; else no3">
+<ng-template #no3>
+  {{ title.toUpperCase() }}
+</ng-template>
 
 <button (click)="loginHandle()">Submit</button>
+
+<ul [class.test]="title" [style.fontSize]="title">
+  <li *ngFor="let book of books">
+    {{book.id}} - {{book.name}}
+  </li>
+</ul>
+
+<ng-template
+  ngFor
+  [ngForOf]="books"
+  let-book
+  let-idx="index"
+  let-total="count"
+>
+  <div>
+    {{book.id}} - {{book.name}}
+  </div>
+</ng-template>
+
+<app-test [progress]="title"
+  (submitEvent)="getDataFromChildren($event)"
+  [(toggle)]="toggle"
+></app-test>

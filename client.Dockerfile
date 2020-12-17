@@ -7,5 +7,8 @@ WORKDIR /app
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+# for window
+RUN cat /entrypoint.sh | tr -d '\r' > /entrypoint.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
 EXPOSE 3000
