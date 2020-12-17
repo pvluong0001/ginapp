@@ -1,0 +1,6 @@
+<h1>{{ title }}</h1>
+
+<input type="text" [(ngModel)]="title">
+<input type="text" [ngModel]="title" (ngModelChange)="title = $event" >
+
+<button (click)="loginHandle()">Submit</button>

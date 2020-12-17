@@ -14,5 +14,8 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
-src/tmp
+api/tmp
 .idea
+api/.idea
+client/.idea
+client/node_modules

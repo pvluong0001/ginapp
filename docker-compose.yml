@@ -1,18 +1,25 @@
-version: "3.5"
+version: "3.9"
+
 services:
-  web:
-    container_name: dockerdev
+  api:
     build:
       context: ./
-      dockerfile: dev.Dockerfile
+      dockerfile: api.Dockerfile
     ports:
       - "3456:3456"
     volumes:
-      - ./src/:/build
+      - ./api/:/build
     depends_on:
       - db
+  client:
+    build:
+      context: ./
+      dockerfile: client.Dockerfile
+    ports:
+      - "8001:3000"
+    volumes:
+      - ./client/:/app
   db:
-    container_name: dockerdev-db
     image: mysql:8.0.22
     command: --default-authentication-plugin=mysql_native_password
     restart: always
