@@ -6,12 +6,10 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  title = 'Login';
-  toggle = true;
-  books = [
-    {id: 1, name: 'Book 1'},
-    {id: 2, name: 'Book 2'},
-  ];
+  user = {
+    email: '',
+    password: ''
+  };
 
   constructor() {
   }
@@ -19,11 +17,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loginHandle(): void {
-    this.title = 'Logged';
-  }
-
-  getDataFromChildren(value: string): void {
-    this.title = value;
+  handleLogin(): void {
+    console.log(this.user, '+++++');
   }
 }

@@ -3,20 +3,18 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {LoginComponent} from './pages/auth/login/login.component';
-import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
-import { TestComponent } from './test/test.component';
+import { LoginComponent } from './domain/auth/pages/login/login.component';
+import { LandingComponent } from './domain/lp/landing/landing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    TestComponent,
+    LandingComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     AppRoutingModule,
     FormsModule
   ],
