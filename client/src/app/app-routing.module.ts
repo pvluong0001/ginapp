@@ -8,9 +8,14 @@ const routes: Routes = [
     loadChildren: () => import('./domain/auth/auth.module').then(m => m.AuthModule)
   },
   {
+    path: 'users',
+    loadChildren: () => import('./domain/user-management/user-management.module')
+      .then(m => m.UserManagementModule),
+  },
+  {
     path: '',
     component: LandingComponent
-  }
+  },
 ];
 
 @NgModule({

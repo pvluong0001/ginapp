@@ -6,6 +6,7 @@ import (
 	"ginapp/auth/services"
 	models "ginapp/core"
 	"ginapp/user"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	_ "github.com/joho/godotenv/autoload"
 	"net/http"
@@ -21,6 +22,9 @@ func main() {
 	service := services.ProvideJwtService()
 
 	server := gin.Default()
+
+	// apply cors
+	server.Use(cors.Default())
 
 	api := server.Group("/api")
 	{

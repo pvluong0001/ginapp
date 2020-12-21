@@ -222,6 +222,13 @@
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-9.0.0.tgz#227dc53e1ac81824f998c6e76000b7efc522641e"
   integrity sha512-6Pxgsrf0qF9iFFqmIcWmjJGkkCaCm6V5QNnxMy2KloO3SDq6QuMVRbN9RtC8Urmo25LP+eZ6ZgYqFYpdD8Hd9w==
 
+"@angular/core@^10.0.0":
+  version "10.2.4"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-10.2.4.tgz#1124061f8232d79fcff7508c9243ec5ec3fc00f3"
+  integrity sha512-5xpAvmZwD9nZ8eWx10urjibqEeePGEiFXVMEn3IaJWgfdOcMmeSoioW9JUllT3w85+DlNVWbRbhz0YfE9a4jyw==
+  dependencies:
+    tslib "^2.0.0"
+
 "@angular/core@~11.0.4":
   version "11.0.5"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-11.0.5.tgz#b8c448c3cd4f6dae7327cc1ba4ee2aa29c8dbc26"
@@ -1148,6 +1155,41 @@
     loader-utils "^2.0.0"
     merge-source-map "^1.1.0"
     schema-utils "^2.7.0"
+
+"@ngrx/effects@^10.1.1":
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-10.1.1.tgz#cc6011b6b77c2c63f500a0dda547cfbaca0103c5"
+  integrity sha512-DMBuEpnom5ZU/LIwb4CZIcknDGDDsnB1B5MoQZ4gY1tuYA4flpXABkBj/gvONL3u5VkwAzWvqhdUYlrzzO6Fjg==
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngrx/entity@^10.1.1":
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-10.1.1.tgz#281470d85fd27b1221e2506f42c3a50f09c81afc"
+  integrity sha512-hORagns/4g9js7jLiXAYBuK4DjCd4mgo0f5fVxMaf75I6Ufpa9KtB1JnkpKgSScZfOExxlOtjBm5HLyB1Fvvzw==
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngrx/schematics@^10.1.1":
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/schematics/-/schematics-10.1.1.tgz#d95dba8ef92cc9c22b627121edd258ee4031dc2b"
+  integrity sha512-ftRS7B9R6OD46hZAFBska43GHrw+KvD2JyOFvSRfoNB7fNpuAehSjBMkCx7YHS3EsabryNf7T1SgW+NdG6RivQ==
+  dependencies:
+    "@angular/core" "^10.0.0"
+
+"@ngrx/store-devtools@^10.1.1":
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-10.1.1.tgz#5c00ba554c90d7e975234a6dafc9082be0752f2e"
+  integrity sha512-w6hsuUqOndZHnRzFaONpzjgNKIPT8wCRejhru+ZyK/L/Q9zRSyBuKLhZLf/zhZXd0qx0vHjjxltDcKoEXNfviQ==
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngrx/store@^10.1.1":
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-10.1.1.tgz#9df7193992aa2378c863ee8cecfc4de922efd9d6"
+  integrity sha512-JiSC1Y6yR2H5/FVgEDeQjXdzn20ru1Vw/4NnISHcwHT3tAn/cpT28cIh24r6HMCSqBwaqGLgCdpoi0TR2ZLkRQ==
+  dependencies:
+    tslib "^2.0.0"
 
 "@ngtools/webpack@11.0.4":
   version "11.0.4"
