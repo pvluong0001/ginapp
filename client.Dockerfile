@@ -1,7 +1,6 @@
 FROM node:14.15.2-alpine3.10
 
-RUN yarn global add @angular/cli
-
+# set working directory
 WORKDIR /app
 
 COPY ./entrypoint.sh /entrypoint.sh
