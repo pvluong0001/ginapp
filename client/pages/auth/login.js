@@ -2,22 +2,30 @@ import Head from "next/head";
 import {createRef} from "react";
 import axiosClient from "../../configs/axiosClient";
 import {useRouter} from "next/router";
+import {useDispatch, useSelector} from "react-redux";
 
 const Auth = () => {
     const router = useRouter()
     const emailRef = createRef()
     const passwordRef = createRef()
+    const dispatch = useDispatch()
+
+    const auth = useSelector(state => state.auth)
 
     const submitHandle = (e) => {
         e.preventDefault();
 
-        axiosClient.post('auth/login', {
-            email: emailRef.current.value,
-            password: passwordRef.current.value,
-        }).then(res => {
-            console.log(res, '+++++++=')
-            return router.replace('/admin')
+        dispatch({
+            type: 'SET_AUTH_USER'
         })
+
+        // axiosClient.post('auth/login', {
+        //     email: emailRef.current.value,
+        //     password: passwordRef.current.value,
+        // }).then(res => {
+        //     console.log(res, '+++++++=')
+        //     return router.replace('/admin')
+        // })
     }
 
     return (
@@ -29,7 +37,7 @@ const Auth = () => {
             <div
                 className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
                 <div className="font-medium self-center text-xl sm:text-2xl uppercase text-gray-800">Login To Your
-                    Account
+                    Account { JSON.stringify(auth) }
                 </div>
                 <button
                     className="relative mt-6 border rounded-md py-2 text-sm text-gray-800 bg-gray-100 hover:bg-gray-200">

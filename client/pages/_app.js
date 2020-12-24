@@ -1,21 +1,10 @@
 import '../styles/globals.css'
-import Provider from "react-redux/lib/components/Provider";
-import {createStore} from "redux";
 
-function activePostReducer (state = [], action) {
-    switch (action.type){
-        case "SELECT_POST":
-            return action.payload;
-        default:
-            return state;
-    }
-}
-
-const store = createStore(activePostReducer, ['Use redux'])
-
+import rootStore from "../store";
+import {Provider} from "react-redux";
 function MyApp({ Component, pageProps }) {
   return (
-      <Provider store={store}>
+      <Provider store={rootStore}>
         <Component {...pageProps} />
       </Provider>
   )

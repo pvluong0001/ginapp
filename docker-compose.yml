@@ -15,10 +15,12 @@ services:
     build:
       context: ./
       dockerfile: client.Dockerfile
+    restart: always
     ports:
       - "8001:3000"
     volumes:
       - ./client/:/app
+    command: sh /entrypoint.sh
   db:
     image: mysql:8.0.22
     command: --default-authentication-plugin=mysql_native_password
