@@ -4,7 +4,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {ACT_USER_SET_USER} from "@/domains/auth/reducers/auth";
 import {useFormik} from "formik";
 import axiosClient from "@/configs/axiosClient";
-import Link from "next/link";
 
 const Auth = () => {
     const router = useRouter()
@@ -122,19 +121,16 @@ const Auth = () => {
                     </form>
                 </div>
                 <div className="flex justify-center items-center mt-6">
-                    <span
-                        onClick={() => router.push('/auth/register')}
-                        className="inline-flex items-center font-bold text-blue-500 hover:text-blue-700 text-xs text-center cursor-pointer">
-                        <span>
-                            <svg className="h-6 w-6" fill="none" strokeLinecap="round" strokeLinejoin="round"
-                                 strokeWidth="{2}"
-                                 viewBox="0 0 24 24" stroke="currentColor">
-                                <path
-                                    d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
-                            </svg>
-                        </span>
+                    <a href="#" target="_blank"
+                       className="inline-flex items-center font-bold text-blue-500 hover:text-blue-700 text-xs text-center">
+                <span>
+                    <svg className="h-6 w-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="{2}"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+                    </svg>
+                </span>
                         <span className="ml-2">You don't have an account?</span>
-                    </span>
+                    </a>
                 </div>
             </div>
         </div>

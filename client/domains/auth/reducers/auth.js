@@ -1,9 +1,16 @@
-const authReducer = (state = {email: 'test'}, action) => {
+export const ACT_USER_SET_USER = '[User] Set_User'
+
+const initialState = {
+    user: null,
+    isLoggedIn: false
+};
+
+const authReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'SET_AUTH_USER':
+        case ACT_USER_SET_USER:
             return {
-                email: 'test',
-                name: 'test'
+                user: action.payload,
+                isLoggedIn: true
             };
         default:
             return state;
