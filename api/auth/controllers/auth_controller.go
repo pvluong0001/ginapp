@@ -38,7 +38,12 @@ func (controller AuthController) RegisterAction() gin.HandlerFunc {
 			Email:    request.Email,
 			Password: request.Password,
 		}
-		controller.AuthService.RegisterUserHandle(&user)
+		if err := controller.AuthService.RegisterUserHandle(&user); err != nil {
+			context.JSON(http.StatusBadRequest, gin.H{
+				"error": err.Error(),
+			})
+			return
+		}
 
 		context.JSON(http.StatusOK, gin.H{
 			"message": "Register success",

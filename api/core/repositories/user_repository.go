@@ -1,6 +1,7 @@
 package repositories
 
 import (
+	"errors"
 	"ginapp/core/models"
 	"gorm.io/gorm"
 )
@@ -31,6 +32,15 @@ func (repo *UserRepository) All() []models.User {
 }
 
 func (repo *UserRepository) Create(user *models.User) error {
+	row := models.User{
+		Email: user.Email,
+	}
+
+	repo.DB.First(&row)
+	if row.ID > 0 {
+		return errors.New(`{"email": "Email was existed"}`)
+	}
+
 	err := repo.DB.Create(&user).Error
 
 	if err != nil {

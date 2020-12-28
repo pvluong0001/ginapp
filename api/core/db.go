@@ -10,7 +10,7 @@ import (
 
 func ConnectDatabase() *gorm.DB {
 	dsn := getDBUrl()
-	fmt.Println(dsn)
+
 	database, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {

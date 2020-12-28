@@ -1,11 +1,12 @@
 import Head from "next/head";
 import {useRouter} from "next/router";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {ACT_USER_SET_USER} from "@/domains/auth/reducers/auth";
 import {useFormik} from "formik";
 import axiosClient from "@/configs/axiosClient";
 import * as yup from 'yup';
 import ValidationText from "@/domains/share/components/validation-text";
+import {isJSON} from "../../helpers/json";
 
 const Auth = () => {
     const router = useRouter()
@@ -17,20 +18,21 @@ const Auth = () => {
             passwordConfirm: ''
         },
         onSubmit: data => {
-            console.log(data)
-            return
             axiosClient.post('auth/register', data)
                 .then(res => {
-                    dispatch({
-                        type: ACT_USER_SET_USER,
-                        payload: res.data,
-                    })
+                    console.log(res, '+++++')
+                })
+                .catch(err => {
+                    const response = err.response.data;
+
+                    const jsonError = isJSON(response.error)
+                    jsonError && formik.setErrors(jsonError)
                 })
         },
         validationSchema: yup.object().shape({
             email: yup.string().required().email(),
-            password: yup.string().required(),
-            passwordConfirm: yup.string().required().oneOf([yup.ref('password'), null], 'Must match with password!')
+            password: yup.string(),
+            passwordConfirm: yup.string()
         })
     })
 
