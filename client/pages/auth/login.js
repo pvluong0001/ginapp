@@ -4,7 +4,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {ACT_USER_SET_USER} from "@/domains/auth/reducers/auth";
 import {useFormik} from "formik";
 import axiosClient from "@/configs/axiosClient";
-import Link from "next/link";
 
 const Auth = () => {
     const router = useRouter()
