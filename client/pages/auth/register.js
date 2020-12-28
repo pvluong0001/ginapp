@@ -31,8 +31,8 @@ const Auth = () => {
         },
         validationSchema: yup.object().shape({
             email: yup.string().required().email(),
-            password: yup.string(),
-            passwordConfirm: yup.string()
+            password: yup.string().required(),
+            passwordConfirm: yup.string().required().oneOf([yup.ref('password')])
         })
     })
 
